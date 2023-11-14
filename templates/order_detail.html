@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Comm Store : Pizza and Sub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    
+</head>
+<body>
+    <div class="container">
+        <header class="text-center">
+            <h1>Order: {{order.ID}}</h1>
+        </header>
+        <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>ID</span>
+                    <span>{{order.ID}}</span>
+                </div>
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>User Name</span>
+                    <span>{{order.USERNAME}}</span>
+                </div>
+
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>Phone</span>
+                    <span>{{order.PHONE}}</span>
+                </div>
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>Product</span>
+                    <span>{{order.PRODUCT_NAME}}</span>
+                </div>
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>Toppings</span>
+                    <span>
+                        {%for topping in order.TOPPINGS %}
+                            {{topping.NAME}},
+                        {%endfor%}
+                    </span>
+                </div>
+
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>Delivery / Pickup</span>
+                    <span>{%if order.IS_DELIVERY == 1 %} Delivery {% else %} Pickup {%endif%}</span>
+                </div>
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>Address</span>
+                    <span>{%if order.IS_DELIVERY == 1 %} {{order.ADDRESS}} {% else %} N/A {%endif%}</span>
+                </div>
+
+                <div class="d-flex justify-content-between p-2 border">
+                    <span>When</span>
+                    <span>{{order.WHEN_}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
